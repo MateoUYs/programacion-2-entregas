@@ -1,0 +1,20 @@
+digraph Requisitos {
+  graph [bgcolor="#ffffff", pad=0.26, ranksep=0.45, nodesep=0.37, fontname="DejaVu Sans", rankdir=TB];
+  node [shape=box, style="filled,rounded", color="#8db6cc", fillcolor="#edf6fa", fontname="DejaVu Sans", fontsize=13, fontcolor="#142f40", margin="0.19,0.11"];
+  edge [color="#52798d", arrowsize=0.68, fontname="DejaVu Sans", fontsize=10];
+  inicio [label="1. Concepción\nProblema y actores"];
+  obt [label="2. Indagación\nNecesidades"];
+  elab [label="3. Elaboración\nEscenarios y modelos"];
+  neg [label="4. Negociación\nPrioridades"];
+  espec [label="5. Especificación\nAcuerdos documentados"];
+  val [label="6. Validación\nRevisión con usuarios"];
+  gestion [label="7. Gestión\nControl de cambios durante todo el proceso", fillcolor="#d5eeeb", color="#6bb2a8"];
+  { rank=same; inicio; obt; elab; }
+  { rank=same; val; espec; neg; }
+  inicio -> obt -> elab -> neg;
+  neg -> espec -> val;
+  val -> obt [style=dashed, constraint=false, label=" ajustes "];
+  val -> gestion [style=dotted, arrowhead=none];
+  espec -> gestion [style=dotted, arrowhead=none];
+  neg -> gestion [style=dotted, arrowhead=none];
+}

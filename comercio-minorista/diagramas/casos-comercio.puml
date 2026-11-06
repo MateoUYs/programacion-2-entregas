@@ -1,0 +1,38 @@
+@startuml
+left to right direction
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam linetype ortho
+skinparam nodesep 50
+skinparam backgroundColor white
+skinparam usecaseBackgroundColor #EDF6FA
+skinparam usecaseBorderColor #587D8E
+skinparam usecaseFontColor #173344
+skinparam ArrowColor #42667A
+skinparam actorBorderColor #42667A
+actor "Dueño" as Dueno
+actor Vendedor
+actor "Servicio de pagos" as Pagos
+rectangle "Sistema del comercio minorista" {
+  usecase "UC01\nConsultar disponibilidad" as Consulta
+  usecase "UC02\nDar de alta un producto" as Alta
+  usecase "UC03\nDar de baja un producto" as Baja
+  usecase "UC04\nModificar un producto" as Modificar
+  usecase "UC05\nRegistrar una venta" as Venta
+  usecase "UC06\nPagar con tarjeta de crédito" as Credito
+}
+Dueno -- Alta
+Dueno -- Baja
+Dueno -- Modificar
+Dueno -right- Consulta
+Vendedor -- Alta
+Vendedor -- Venta
+Vendedor -right- Consulta
+Alta ..> Consulta : <<include>>
+Baja ..> Consulta : <<include>>
+Modificar ..> Consulta : <<include>>
+Venta ..> Consulta : <<include>>
+Credito .left.> Venta : <<extend>>\n[medio de pago = crédito]
+Credito -up- Pagos
+@enduml

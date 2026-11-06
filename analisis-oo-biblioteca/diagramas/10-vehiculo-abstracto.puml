@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam classBackgroundColor #EDF6FA
+skinparam classBorderColor #587D8E
+skinparam classFontColor #173344
+skinparam ArrowColor #42667A
+skinparam noteBackgroundColor #F6F1DA
+skinparam noteBorderColor #B3A776
+hide circle
+hide empty members
+abstract class "Vehículo" as Vehiculo
+class Auto
+class "Camión" as Camion
+Vehiculo <|-- Auto
+Vehiculo <|-- Camion
+note right of Vehiculo
+  Clase abstracta
+end note
+@enduml

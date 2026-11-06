@@ -1,0 +1,9 @@
+digraph Trazabilidad {
+  graph [bgcolor="#ffffff", pad=0.25, rankdir=LR, nodesep=0.36];
+  node [shape=box, style="filled,rounded", color="#8db6cc", fillcolor="#edf6fa", fontname="DejaVu Sans", fontsize=12, fontcolor="#142f40", margin="0.17,0.11"];
+  edge [color="#52798d", arrowsize=0.68];
+  necesidad [label="Necesidad\nElegir cuántas preguntas responder"];
+  requisito [label="RF04\nSeleccionar sin repeticiones"];
+  prueba [label="Comprobación\nPedir 3 de 5 y verificar\n3 preguntas diferentes", fillcolor="#d5eeeb", color="#6bb2a8"];
+  necesidad -> requisito -> prueba;
+}

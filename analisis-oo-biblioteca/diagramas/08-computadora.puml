@@ -1,0 +1,25 @@
+@startuml
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam classBackgroundColor #EDF6FA
+skinparam classBorderColor #587D8E
+skinparam classFontColor #173344
+skinparam ArrowColor #42667A
+skinparam noteBackgroundColor #F6F1DA
+skinparam noteBorderColor #B3A776
+hide circle
+hide empty members
+class Computadora
+class CPU
+class "Disco duro" as Disco
+class "Periférico" as Periferico
+class "Cámara web" as Camara
+class Parlantes
+Computadora "1" *-- "1" CPU : incorpora
+Computadora "1" *-- "1..3" Disco : incorpora
+Computadora "0..1" o-- "2..*" Periferico : conecta
+Computadora "0..1" o-- "0..1" Camara : conecta
+Computadora "0..1" o-- "0..1" Parlantes : conecta
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam classBackgroundColor #EDF6FA
+skinparam classBorderColor #587D8E
+skinparam classFontColor #173344
+skinparam ArrowColor #42667A
+skinparam noteBackgroundColor #F6F1DA
+skinparam noteBorderColor #B3A776
+hide circle
+hide empty members
+class Alumno
+class Examen
+class "Rendición" as Rendicion {
+  fecha
+  nota
+}
+class Profesor
+Alumno "1..*" -right- "0..*" Examen : rinde >
+(Alumno, Examen) .. Rendicion
+Rendicion "1..*" -down- "1" Profesor : corrige <
+@enduml

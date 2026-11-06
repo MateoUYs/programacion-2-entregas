@@ -1,0 +1,28 @@
+@startuml
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam classBackgroundColor #EDF6FA
+skinparam classBorderColor #587D8E
+skinparam classFontColor #173344
+skinparam ArrowColor #42667A
+skinparam noteBackgroundColor #F6F1DA
+skinparam noteBorderColor #B3A776
+hide circle
+hide empty members
+skinparam ranksep 85
+class Equipo {
+  nombre
+}
+class Jugador {
+  cédula
+  apellido
+}
+Equipo "1" -- "11..*" Jugador : integra <
+Equipo "0..1" -- "1" Jugador : capitanea <
+note right of Equipo
+  El capitán integra
+  el equipo que capitanea.
+end note
+@enduml

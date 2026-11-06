@@ -1,0 +1,49 @@
+@startuml
+skinparam nodesep 65
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam classBackgroundColor #EDF6FA
+skinparam classBorderColor #587D8E
+skinparam classFontColor #173344
+skinparam ArrowColor #42667A
+skinparam noteBackgroundColor #F6F1DA
+skinparam noteBorderColor #B3A776
+hide circle
+hide empty members
+abstract class Empleado {
+  cédula
+  nombre
+}
+class Gerente {
+  departamento
+}
+abstract class Vendedor {
+  comisión
+}
+class VendedorFijo {
+  horario de trabajo
+}
+class VendedorZafral {
+  período de contratación
+}
+class Cliente {
+  razón social
+  dirección
+}
+class "Atención" as Atencion {
+  fecha
+  hora
+}
+Empleado <|-- Gerente
+Empleado <|-- Vendedor
+Vendedor <|-- VendedorFijo
+Vendedor <|-- VendedorZafral
+Vendedor "1" -right- "1..*" Atencion : realiza >
+Atencion "1..*" -down- "1" Cliente : corresponde a >
+note right of Atencion
+  Un vendedor y un cliente
+  pueden tener varias atenciones.
+end note
+@enduml

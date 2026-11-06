@@ -1,0 +1,40 @@
+@startuml
+skinparam nodesep 65
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam classBackgroundColor #EDF6FA
+skinparam classBorderColor #587D8E
+skinparam classFontColor #173344
+skinparam ArrowColor #42667A
+skinparam noteBackgroundColor #F6F1DA
+skinparam noteBorderColor #B3A776
+hide circle
+hide empty members
+class "Categoría" as Categoria {
+  nombre
+}
+class Libro {
+  identificador de ejemplar
+  título
+  autor
+}
+class Usuario {
+  identificación
+  nombre
+  dirección
+}
+class "Préstamo" as Prestamo {
+  fecha de préstamo
+  fecha de devolución [0..1]
+}
+Categoria "1" -down- "0..*" Libro : clasifica >
+Libro "1" -right- "0..*" Prestamo : corresponde a <
+Usuario "1" -down- "0..*" Prestamo : solicita >
+note bottom of Prestamo
+  A lo sumo un préstamo activo
+  por ejemplar. Activo cuando
+  no tiene fecha de devolución.
+end note
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam classBackgroundColor #EDF6FA
+skinparam classBorderColor #587D8E
+skinparam classFontColor #173344
+skinparam ArrowColor #42667A
+skinparam noteBackgroundColor #F6F1DA
+skinparam noteBorderColor #B3A776
+hide circle
+hide empty members
+class Evento {
+  nombre
+  fecha
+}
+class TipoEvento {
+  nombre
+}
+class EspacioCultural {
+  nombre
+  dirección
+}
+class Artista {
+  nombre artístico
+  nombre real
+  país de origen
+}
+TipoEvento "1" -down- "0..*" Evento : clasifica >
+EspacioCultural "1" -down- "0..*" Evento : alberga >
+Evento "0..*" -down- "1..*" Artista : cuenta con >
+note right of Artista
+  Cada artista participa una vez
+  como máximo en el mismo evento.
+end note
+@enduml

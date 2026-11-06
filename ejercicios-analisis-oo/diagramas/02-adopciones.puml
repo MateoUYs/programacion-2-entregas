@@ -1,0 +1,40 @@
+@startuml
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam classBackgroundColor #EDF6FA
+skinparam classBorderColor #587D8E
+skinparam classFontColor #173344
+skinparam ArrowColor #42667A
+skinparam noteBackgroundColor #F6F1DA
+skinparam noteBorderColor #B3A776
+hide circle
+hide empty members
+class Mascota {
+  nombre
+  edad
+  tipo
+}
+class Voluntario {
+  cédula
+  nombre completo
+  número de contacto
+}
+class Adoptante {
+  nombre
+  dirección
+  teléfono
+}
+class "Adopción" as Adopcion {
+  fecha
+  estado de seguimiento
+}
+Voluntario "1" -down- "0..*" Mascota : cuida >
+Mascota "0..*" -right- "0..1" Adoptante : adopta <
+(Mascota, Adoptante) .. Adopcion
+note bottom of Adopcion
+  Estado de seguimiento:
+  abierto o cerrado.
+end note
+@enduml

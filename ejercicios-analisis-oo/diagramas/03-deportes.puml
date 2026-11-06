@@ -1,0 +1,46 @@
+@startuml
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam classBackgroundColor #EDF6FA
+skinparam classBorderColor #587D8E
+skinparam classFontColor #173344
+skinparam ArrowColor #42667A
+skinparam noteBackgroundColor #F6F1DA
+skinparam noteBorderColor #B3A776
+hide circle
+hide empty members
+class Disciplina {
+  nombre
+}
+class Instructor {
+  cédula
+  nombre
+}
+class ActividadDeportiva {
+  nombre
+  horario
+  cupo máximo
+}
+class Ciudadano
+class "Inscripción" as Inscripcion {
+  fecha
+  asistencia inicial [0..1]
+}
+Disciplina "1" -down- "0..*" Instructor : enseña <
+Disciplina "1" -down- "0..*" ActividadDeportiva : corresponde a <
+Instructor "1" -right- "0..*" ActividadDeportiva : dirige >
+ActividadDeportiva "0..*" -right- "0..*" Ciudadano : se inscribe <
+(ActividadDeportiva, Ciudadano) .. Inscripcion
+note bottom of Inscripcion
+  Máximo una inscripción por
+  ciudadano y disciplina.
+  Inscripciones de la actividad
+  no superan su cupo.
+end note
+note top of ActividadDeportiva
+  La disciplina coincide
+  con la del instructor.
+end note
+@enduml
